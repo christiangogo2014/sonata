@@ -11,7 +11,7 @@ docker run -it -v $(pwd):/app/ sonata`
 
 Run the tests
 ```
-# bundle exec rspec . --format=d
+# bundle exec rspec --format=d spec/
 WeatherExtractor
   .call
     when it loads the data form the daily file
