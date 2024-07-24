@@ -1,12 +1,17 @@
 
 Prepare the container
-`docker build -f Dockerfile  -t sonata .`
+```
+docker build -f Dockerfile  -t sonata .
+```
 
 Run the container
-`docker run -it -v $(pwd):/app/ sonata`
+```
+docker run -it -v $(pwd):/app/ sonata`
+```
 
 Run the tests
-`# bundle exec rspec . --format=d
+```
+# bundle exec rspec . --format=d
 WeatherExtractor
   .call
     when it loads the data form the daily file
@@ -17,4 +22,4 @@ WeatherExtractor
 
 Finished in 0.00585 seconds (files took 0.07882 seconds to load)
 4 examples, 0 failures
-`
+```
