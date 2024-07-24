@@ -1,8 +1,6 @@
-require 'smarter_csv'
-
 class WeatherExtractor
 
-  attr_reader :file_path, :rows, :outcome
+  attr_reader :file_path, :rows, :outcome, :header
   MINIMAL_LINE_LENGTH = 40
 
   class << self
@@ -14,13 +12,17 @@ class WeatherExtractor
   def initialize f
     @outcome = nil
     @file_path = f
-    header = false
+    @header = false
     @rows = []
+    find_smallest
+  end
+
+  def find_smallest
     smallest_spread = {day_number:nil, spread: 999999999}
     File.open(@file_path).each do |line|
       line.strip!
-      if !header && line.size >= MINIMAL_LINE_LENGTH 
-        header = true
+      if !@header && line.size >= MINIMAL_LINE_LENGTH 
+        @header = true
         # NOP...
         # p "NOP: #{line}"
       elsif line.size >= MINIMAL_LINE_LENGTH 
@@ -40,7 +42,6 @@ class WeatherExtractor
       end
       @outcome = "#{smallest_spread.dig(:day_number)} #{smallest_spread.dig(:spread)}"
     end
-
   end
 
 end
