@@ -6,7 +6,7 @@ docker build -f Dockerfile  -t sonata .
 
 Run the container
 ```
-docker run -it -v $(pwd):/app/ sonata`
+docker run -it -v $(pwd):/app/ sonata
 ```
 
 Run the tests
