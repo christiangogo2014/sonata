@@ -54,7 +54,7 @@ class SoccerExtractor
       end
     end
 
-    @outcome = "#{smallest_spread.dig(:team_name)} #{smallest_spread.dig(:diff)}"
+    @outcome = "#{smallest_spread.dig(:team_name)}"
   end
 
 end

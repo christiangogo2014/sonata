@@ -32,8 +32,8 @@ describe SoccerExtractor do
         expect(SoccerExtractor::MINIMAL_LINE_LENGTH).to eq 13
       end
 
-      it "must print the name of the team with the smallest difference in ‘for’ and ‘against’ goals (i.e. Aston_Villa 1)." do
-        expect(subject.outcome).to eq "Aston_Villa 1"
+      it "must print the name of the team with the smallest difference in ‘for’ and ‘against’ goals (i.e. Aston_Villa)." do
+        expect(subject.outcome).to eq "Aston_Villa"
       end
 
     end
