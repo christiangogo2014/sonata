@@ -32,3 +32,13 @@ Finished in 0.01069 seconds (files took 0.12386 seconds to load)
 8 examples, 0 failures
 
 ```
+
+Release 1.1.0
+# Changelog
+```
+ * All hardcoded values were extracted into its own file
+ * Extractor class was added in order to delegate correctly the classes responsibilities.
+ * find_smallest, initialize_smallest_spread are now commonly used methods.
+ * Preserve SOLID principles as good practices
+ * Introduced new module SonataSoftware to share global properties
+```

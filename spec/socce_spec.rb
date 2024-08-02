@@ -9,7 +9,7 @@
 #  
 require './soccer'
 
-describe SoccerExtractor do
+describe SonataSoftware::SoccerExtractor do
 
   let(:file_path){ './soccer (1).dat' }
   subject { described_class.call(file_path) }
@@ -29,7 +29,7 @@ describe SoccerExtractor do
 
       # It was replaced by the quantity of columns which every single line has in order to make the code more readable.
       it "use a MINIMAL_COLUMNS_LENGTH_PER_ROW constant" do
-        expect(SoccerExtractor::MINIMAL_COLUMNS_LENGTH_PER_ROW).to eq 3
+        expect(SonataSoftware::SoccerExtractor::MINIMAL_COLUMNS_LENGTH_PER_ROW).to eq 3
       end
 
       it "must print the name of the team with the smallest difference in ‘for’ and ‘against’ goals (i.e. Aston_Villa)." do

@@ -7,7 +7,7 @@
 #  
 require './weather'
 
-describe WeatherExtractor do
+describe SonataSoftware::WeatherExtractor do
 
   let(:file_path){ './w_data (1).dat' }
   subject { described_class.call(file_path) }
@@ -27,7 +27,7 @@ describe WeatherExtractor do
 
       # It has the MIN quantity of columns which every single line MUST has to be taken in account as data.
       it "use a MINIMAL_COLUMNS_LENGTH_PER_ROW constant" do
-        expect(WeatherExtractor::MINIMAL_COLUMNS_LENGTH_PER_ROW).to eq 8
+        expect(SonataSoftware::WeatherExtractor::MINIMAL_COLUMNS_LENGTH_PER_ROW).to eq 8
       end
 
       it "must output the day number (column one) with the smallest temperature spread (i.e. 14 2)." do
