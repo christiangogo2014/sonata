@@ -1,0 +1,8 @@
+module WeatherConstants
+  MINIMAL_COLUMNS_LENGTH_PER_ROW = 8
+  INITIAL_SPREAD   = Float::INFINITY
+  DAY_NUMBER_INDEX = 0
+  MAX_TEMP_INDEX   = 1
+  MIN_TEMP_INDEX   = 2
+  SPLITTER_REGEX   = / +/
+end

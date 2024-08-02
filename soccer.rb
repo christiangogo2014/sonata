@@ -16,10 +16,10 @@ class SoccerExtractor
     @file_path = f
     @header = false
     @rows = []
-    find_smallest_diff
+    find_smallest
   end
 
-  def find_smallest_diff
+  def find_smallest
     smallest_spread = {team_name:nil, diff: INITIAL_SPREAD}
 
     File.open(@file_path).each do |line|
@@ -43,7 +43,6 @@ class SoccerExtractor
        	# HEADS UP! this is a tricky part, since the diff could be negative
        	##########################################
         current_diff = (_f - _a).abs
-        # p "#{team_name}: #{current_diff}"
         if current_diff < smallest_spread.dig(:diff)
           smallest_spread = {
             team_name: team_name, 

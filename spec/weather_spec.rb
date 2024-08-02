@@ -25,9 +25,9 @@ describe WeatherExtractor do
         expect(subject.rows.count).to eq 31
       end
 
-      # It was extracted by removing all spaces from smallest line
-      it "use a MINIMAL_LINE_LENGTH constant" do
-        expect(WeatherExtractor::MINIMAL_LINE_LENGTH).to eq 40
+      # It has the MIN quantity of columns which every single line MUST has to be taken in account as data.
+      it "use a MINIMAL_COLUMNS_LENGTH_PER_ROW constant" do
+        expect(WeatherExtractor::MINIMAL_COLUMNS_LENGTH_PER_ROW).to eq 8
       end
 
       it "must output the day number (column one) with the smallest temperature spread (i.e. 14 2)." do
