@@ -27,9 +27,9 @@ describe SoccerExtractor do
         expect(subject.rows.count).to eq 20
       end
 
-      # It was extracted by removing all spaces from smallest line
-      it "use a MINIMAL_LINE_LENGTH constant" do
-        expect(SoccerExtractor::MINIMAL_LINE_LENGTH).to eq 13
+      # It was replaced by the quantity of columns which every single line has in order to make the code more readable.
+      it "use a MINIMAL_COLUMNS_LENGTH_PER_ROW constant" do
+        expect(SoccerExtractor::MINIMAL_COLUMNS_LENGTH_PER_ROW).to eq 3
       end
 
       it "must print the name of the team with the smallest difference in ‘for’ and ‘against’ goals (i.e. Aston_Villa)." do

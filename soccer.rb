@@ -1,8 +1,9 @@
+require './soccer_constants'
+
 class SoccerExtractor
+  include SoccerConstants
 
   attr_reader :file_path, :rows, :outcome
-  MINIMAL_LINE_LENGTH = 13
-  COMMENT_REGEX = /^-/
 
   class << self
     def call(*args)
@@ -19,27 +20,25 @@ class SoccerExtractor
   end
 
   def find_smallest_diff
-    smallest_spread = {team_name:nil, diff: 999999999}
+    smallest_spread = {team_name:nil, diff: INITIAL_SPREAD}
 
     File.open(@file_path).each do |line|
+
+      #########
+      # Clean and normalize data to be processed
       line.strip!
-      if !@header && line.size >= MINIMAL_LINE_LENGTH
+      data         =  line.split(/#{SPLITTER_REGEX}/)
+
+      if !@header && data.size >= MINIMAL_COLUMNS_LENGTH_PER_ROW
         @header = true
         # NOP...
-        # p "NOP: #{line}"
-      elsif line.size >= MINIMAL_LINE_LENGTH  && !line.match(COMMENT_REGEX)
+      elsif data.size >= MINIMAL_COLUMNS_LENGTH_PER_ROW  && !line.match(COMMENT_REGEX)
+
+        team_name    =  data[TEAM_NAME_INDEX]
+       	_f           =  data[FOR_INDEX].to_i
+       	_a           =  data[AGAINST_INDEX].to_i
         @rows        << "#{line}"
-        data         =  line.split(/ +/)
-        #row_num      =  data[0].to_i
-        team_name    =  data[1]
-        #_p           =  data[2].to_i
-       	#_w           =  data[3].to_i
-       	#_l           =  data[4].to_i
-       	#_d           =  data[5].to_i
-       	_f           =  data[6].to_i
-       	#_sep         =  data[7].to_i
-       	_a           =  data[8].to_i
-       	#_pts         =  data[9].to_i
+
        	##########################################
        	# HEADS UP! this is a tricky part, since the diff could be negative
        	##########################################

@@ -1,0 +1,9 @@
+module SoccerConstants
+  MINIMAL_COLUMNS_LENGTH_PER_ROW = 3
+  COMMENT_REGEX    = /^-/
+  INITIAL_SPREAD   = Float::INFINITY
+  TEAM_NAME_INDEX  = 1
+  FOR_INDEX        = 6
+  AGAINST_INDEX    = 8
+  SPLITTER_REGEX   = / +/
+end
