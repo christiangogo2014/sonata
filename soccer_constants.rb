@@ -5,5 +5,5 @@ module SoccerConstants
   TEAM_NAME_INDEX  = 1
   FOR_INDEX        = 6
   AGAINST_INDEX    = 8
-  SPLITTER_REGEX   = / +/
+  SPLITTER_REGEX   = /\s+/
 end

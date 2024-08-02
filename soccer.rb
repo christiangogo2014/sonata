@@ -1,9 +1,10 @@
+require './extractor'
 require './soccer_constants'
 
-class SoccerExtractor
+class SoccerExtractor < Extractor
   include SoccerConstants
 
-  attr_reader :file_path, :rows, :outcome
+  attr_reader :rows, :outcome, :header
 
   class << self
     def call(*args)
@@ -20,20 +21,21 @@ class SoccerExtractor
   end
 
   def find_smallest
-    smallest_spread = {team_name:nil, diff: INITIAL_SPREAD}
-
+    smallest_spread = {
+      team_name:nil, 
+      diff: INITIAL_SPREAD
+    }
     File.open(@file_path).each do |line|
 
       #########
-      # Clean and normalize data to be processed
+      # Clean and normalize data
       line.strip!
-      data         =  line.split(/#{SPLITTER_REGEX}/)
+      data         =  line.split(SPLITTER_REGEX)
 
       if !@header && data.size >= MINIMAL_COLUMNS_LENGTH_PER_ROW
         @header = true
         # NOP...
       elsif data.size >= MINIMAL_COLUMNS_LENGTH_PER_ROW  && !line.match(COMMENT_REGEX)
-
         team_name    =  data[TEAM_NAME_INDEX]
        	_f           =  data[FOR_INDEX].to_i
        	_a           =  data[AGAINST_INDEX].to_i

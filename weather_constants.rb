@@ -4,5 +4,5 @@ module WeatherConstants
   DAY_NUMBER_INDEX = 0
   MAX_TEMP_INDEX   = 1
   MIN_TEMP_INDEX   = 2
-  SPLITTER_REGEX   = / +/
+  SPLITTER_REGEX   = /\s+/
 end

@@ -1,10 +1,10 @@
+require './extractor'
 require './weather_constants'
 
-class WeatherExtractor
+class WeatherExtractor < Extractor
   include WeatherConstants
 
-  attr_reader :file_path, :rows, :outcome, :header
-  MINIMAL_LINE_LENGTH = 40
+  attr_reader :rows, :outcome, :header
 
   class << self
     def call(*args)
@@ -21,7 +21,10 @@ class WeatherExtractor
   end
 
   def find_smallest
-    smallest_spread = {day_number:nil, spread: INITIAL_SPREAD}
+    smallest_spread = {
+      day_number:nil, 
+      spread: INITIAL_SPREAD
+    }
     File.open(@file_path).each do |line|
 
       #########
@@ -36,7 +39,7 @@ class WeatherExtractor
         day_number   =  data[DAY_NUMBER_INDEX]
         max_temp     =  data[MAX_TEMP_INDEX].to_i
         min_temp     =  data[MIN_TEMP_INDEX].to_i
-        @rows          << "#{line}"
+        @rows        << "#{line}"
         
         current_spread = max_temp - min_temp
         if current_spread < smallest_spread.dig(:spread)
