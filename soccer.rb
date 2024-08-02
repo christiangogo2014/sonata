@@ -4,27 +4,8 @@ require './soccer_constants'
 class SoccerExtractor < Extractor
   include SoccerConstants
 
-  attr_reader :rows, :outcome, :header
-
-  class << self
-    def call(*args)
-      new(*args)
-    end
-  end
-
-  def initialize f
-    @outcome = nil
-    @file_path = f
-    @header = false
-    @rows = []
-    find_smallest
-  end
-
   def find_smallest
-    smallest_spread = {
-      team_name:nil, 
-      diff: INITIAL_SPREAD
-    }
+
     File.open(@file_path).each do |line|
 
       #########
@@ -45,8 +26,8 @@ class SoccerExtractor < Extractor
        	# HEADS UP! this is a tricky part, since the diff could be negative
        	##########################################
         current_diff = (_f - _a).abs
-        if current_diff < smallest_spread.dig(:diff)
-          smallest_spread = {
+        if current_diff < @smallest_spread.dig(:diff)
+          @smallest_spread = {
             team_name: team_name, 
             diff: current_diff
           }
@@ -54,7 +35,14 @@ class SoccerExtractor < Extractor
       end
     end
 
-    @outcome = "#{smallest_spread.dig(:team_name)}"
+    @outcome = "#{@smallest_spread.dig(:team_name)}"
+  end
+
+  def initialize_smallest_spread
+    {
+      team_name:nil, 
+      diff: INITIAL_SPREAD
+    }
   end
 
 end
