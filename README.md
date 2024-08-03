@@ -33,8 +33,8 @@ Finished in 0.01341 seconds (files took 0.084 seconds to load)
 
 ```
 
-Release 1.1.0
-# Changelog
+# Release 1.1.0
+Changelog
 ```
  * All hardcoded values were extracted into its own file
  * Extractor class was added in order to delegate correctly the classes responsibilities.
@@ -42,7 +42,7 @@ Release 1.1.0
  * Preserve SOLID principles as good practices
  * Introduced new module SonataSoftware to share global properties
 ```
-# ToDo
+ToDo
 ```
 * Including its own folder regarding the class hierarchy
 ```
