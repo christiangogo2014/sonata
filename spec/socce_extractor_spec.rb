@@ -7,7 +7,7 @@
 #
 #  Write a program to _print the name of the team with the smallest difference in ‘for’ and ‘against’ goals_.
 #  
-require './soccer'
+require './soccer_extractor'
 
 describe SonataSoftware::SoccerExtractor do
 

@@ -42,3 +42,7 @@ Release 1.1.0
  * Preserve SOLID principles as good practices
  * Introduced new module SonataSoftware to share global properties
 ```
+# ToDo
+```
+* Including its own folder regarding the class hierarchy
+```

@@ -20,13 +20,13 @@ module SonataSoftware
           # NOP...
         elsif data.size >= MINIMAL_COLUMNS_LENGTH_PER_ROW  && !line.match(COMMENT_REGEX)
           team_name    =  data[TEAM_NAME_INDEX]
-         	_f           =  data[FOR_INDEX].to_i
-         	_a           =  data[AGAINST_INDEX].to_i
+          _f           =  data[FOR_INDEX].to_i
+          _a           =  data[AGAINST_INDEX].to_i
           @rows        << "#{line}"
 
-         	##########################################
-         	# HEADS UP! this is a tricky part, since the diff could be negative
-         	##########################################
+           ##########################################
+           # HEADS UP! this is a tricky part, since the diff could be negative
+           ##########################################
           current_diff = (_f - _a).abs
           if current_diff < @smallest_spread.dig(:diff)
             @smallest_spread = {

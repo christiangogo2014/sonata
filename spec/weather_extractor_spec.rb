@@ -5,7 +5,7 @@
 #  with the smallest temperature spread (the maximum temperature is the second column
 #  the minimum the third column).
 #  
-require './weather'
+require './weather_extractor'
 
 describe SonataSoftware::WeatherExtractor do
 
